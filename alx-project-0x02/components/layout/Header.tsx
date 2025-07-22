@@ -9,24 +9,16 @@ export default function Header() {
       <nav>
         <ul className="flex gap-6 text-gray-700">
           <li>
-            <Link href="/home" className="hover:text-blue-500 transition">
-              Home
-            </Link>
+            <Link href="/" className="hover:text-blue-500 transition">Home</Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-blue-500 transition">
-              About
-            </Link>
+            <Link href="/about" className="hover:text-blue-500 transition">About</Link>
           </li>
           <li>
-            <Link href="/posts" className="hover:text-blue-500 transition">
-              Posts
-            </Link>
+            <Link href="/posts" className="hover:text-blue-500 transition">Posts</Link>
           </li>
           <li>
-            <Link href="/users" className="hover:text-blue-500 transition">
-              Users
-            </Link>
+            <Link href="/users" className="hover:text-blue-500 transition">Users</Link>
           </li>
         </ul>
       </nav>
