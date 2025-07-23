@@ -6,19 +6,20 @@ import PostCard from "@/components/common/PostCard";
 import { PostProps } from "@/interfaces";
 import Header from "@/components/layout/Header";
 
-const PostsPage = () => {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+interface PostsPageProps {
+  posts: PostProps[];
+}
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=6");
-      const data = await res.json();
-      setPosts(data);
-    };
+export const getStaticProps = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=9');
+  const posts = await res.json();
 
-    fetchPosts();
-  }, []);
+  return {
+    props: { posts },
+  };
+};
 
+const PostsPage = ({ posts }: PostsPageProps) => {
   return (
     <>
       <Head>
@@ -27,11 +28,16 @@ const PostsPage = () => {
 
       <Header />
 
-      <main className="p-6 bg-gray-50 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6 text-center">📬 Posts</h1>
+      <main className="min-h-screen bg-gray-50 text-gray-900 p-6">
+        <h1 className="text-3xl font-bold mb-6 text-center">📝 Posts</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <PostCard key={post.id} {...post} />
+            <PostCard
+              key={post.id}
+              title={post.title}
+              content={post.body}
+              userId={post.userId}
+            />
           ))}
         </div>
       </main>

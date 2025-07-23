@@ -3,6 +3,12 @@
 import React from "react";
 import { PostProps } from "@/interfaces";
 
+interface PostCardProps {
+  title: string;
+  content: string;  // This maps to body
+  userId: number;
+}
+
 const PostCard: React.FC<PostProps> = ({ title, body, userId }) => {
   return (
     <div className="border rounded-lg p-4 shadow-md bg-white">

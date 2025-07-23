@@ -24,21 +24,25 @@ export interface ButtonProps {
  * Interface for PostCard component props
  */
 export interface PostProps {
-  id: number
-  title: string
-  body: string
-  userId: number
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
 }
+
 
 /**
  * Interface for UserCard component props
  */
 export interface UserProps {
-  id: number
-  name: string
-  email: string
+  id: number;
+  name: string;
+  email: string;
   address: {
-    street: string
-    city: string
-  }
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+  };
 }
+
