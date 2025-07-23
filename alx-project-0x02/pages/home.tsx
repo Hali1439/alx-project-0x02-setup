@@ -6,6 +6,8 @@ import Header from '@/components/layout/Header';
 import Card from '@/components/common/Card';
 import PostModal from '@/components/common/PostModal';
 
+
+
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<{ title: string; content: string }[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
