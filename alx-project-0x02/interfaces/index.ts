@@ -12,6 +12,8 @@ export interface CardProps {
  * Interface for Button component props
  */
 export interface ButtonProps {
+  label: string;
+  
   size: 'small' | 'medium' | 'large'
   shape: 'rounded-sm' | 'rounded-md' | 'rounded-full'
   children: React.ReactNode
@@ -22,6 +24,7 @@ export interface ButtonProps {
  * Interface for PostCard component props
  */
 export interface PostProps {
+  id: number
   title: string
   body: string
   userId: number
