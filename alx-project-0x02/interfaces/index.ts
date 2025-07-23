@@ -28,6 +28,13 @@ export interface PostProps {
   title: string;
   body: string;
   userId: number;
+  // interfaces/index.ts
+
+  
+  content: string; // <-- must match what you're passing
+  
+
+
 }
 
 

@@ -1,41 +1,32 @@
 // pages/posts.tsx
 
-import Head from "next/head";
-import { useEffect, useState } from "react";
-import PostCard from "@/components/common/PostCard";
-import { PostProps } from "@/interfaces";
-import Header from "@/components/layout/Header";
+import Head from 'next/head';
+import Header from '@/components/layout/Header';
+import PostCard from '@/components/common/PostCard';
+import { PostProps } from '@/interfaces';
 
 interface PostsPageProps {
   posts: PostProps[];
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=9');
-  const posts = await res.json();
-
-  return {
-    props: { posts },
-  };
-};
-
-const PostsPage = ({ posts }: PostsPageProps) => {
+const PostsPage: React.FC<PostsPageProps> = ({ posts }) => {
   return (
     <>
       <Head>
         <title>Posts | ALX Project 0x02</title>
+        <meta name="description" content="List of posts from external API" />
       </Head>
 
       <Header />
 
-      <main className="min-h-screen bg-gray-50 text-gray-900 p-6">
-        <h1 className="text-3xl font-bold mb-6 text-center">📝 Posts</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post) => (
+      <main className="min-h-screen bg-white text-gray-900 p-6">
+        <h1 className="text-3xl font-bold mb-4 text-center">📝 Posts</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post, index) => (
             <PostCard
-              key={post.id}
+              key={index}
               title={post.title}
-              content={post.body}
+              content={post.content}
               userId={post.userId}
             />
           ))}
@@ -43,6 +34,23 @@ const PostsPage = ({ posts }: PostsPageProps) => {
       </main>
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+  // ✅ Map the API data to match your component's expected props
+  const posts = (await res.json()).map((post: any) => ({
+    title: post.title,
+    content: post.body, // Mapping `body` to `content`
+    userId: post.userId,
+  }));
+
+  return {
+    props: {
+      posts,
+    },
+  };
 };
 
 export default PostsPage;
