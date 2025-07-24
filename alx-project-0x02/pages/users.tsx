@@ -1,5 +1,5 @@
 // pages/users.tsx
-
+import React from 'react';
 import Head from 'next/head';
 import Header from '@/components/layout/Header';
 import UserCard from '@/components/common/UserCard';
@@ -25,6 +25,7 @@ const UsersPage: React.FC<UsersPageProps> = ({ users }) => {
           {users.map((user) => (
             <UserCard
               key={user.id}
+              id={user.id}
               name={user.name}
               email={user.email}
               address={user.address}

@@ -1,25 +1,20 @@
 import React from 'react';
 import { ButtonProps } from '@/interfaces';
+import Button from '@/components/common/Button';
 
-const getSizeClass = (size: ButtonProps['size']) => {
-  switch (size) {
-    case 'small':
-      return 'text-sm px-3 py-1';
-    case 'medium':
-      return 'text-base px-4 py-2';
-    case 'large':
-      return 'text-lg px-5 py-3';
-    default:
-      return '';
-  }
-};
+const AboutPage: React.FC<{}> = () => {
+  const handleClick = () => alert('Button clicked!');
 
-const Button: React.FC<ButtonProps> = ({ label, size, shape }) => {
   return (
-    <button className={`bg-blue-600 text-white ${getSizeClass(size)} ${shape}`}>
-      {label}
-    </button>
+    <main className="min-h-screen p-6">
+      <h1 className="text-4xl font-bold mb-4">Welcome to the About page</h1>
+      <div className="space-x-4">
+        <Button label="Small Rounded" size="small" shape="rounded-sm" onClick={handleClick} children={null} />
+        <Button label="Medium Rounded" size="medium" shape="rounded-md" onClick={handleClick} children={null} />
+        <Button label="Large Rounded" size="large" shape="rounded-full" onClick={handleClick} children={null} />
+      </div>
+    </main>
   );
 };
 
-export default Button;
+export default AboutPage;
