@@ -22,9 +22,10 @@ const PostsPage: React.FC<PostsPageProps> = ({ posts }) => {
       <main className="min-h-screen bg-white text-gray-900 p-6">
         <h1 className="text-3xl font-bold mb-4 text-center">📝 Posts</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
+          {posts.map((post) => (
             <PostCard
-              key={index}
+              key={post.id}
+              id={post.id}
               title={post.title}
               content={post.content}
               userId={post.userId}
@@ -41,6 +42,7 @@ export const getStaticProps = async () => {
 
   // ✅ Map the API data to match your component's expected props
   const posts = (await res.json()).map((post: any) => ({
+    id: post.id,
     title: post.title,
     content: post.body, // Mapping `body` to `content`
     userId: post.userId,

@@ -26,15 +26,10 @@ export interface ButtonProps {
 export interface PostProps {
   id: number;
   title: string;
-  body: string;
   userId: number;
   // interfaces/index.ts
 
-  
   content: string; // <-- must match what you're passing
-  
-
-
 }
 
 
